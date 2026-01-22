@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/horoscope/page": "app/horoscope/page.js",
+  "/horoscope/[sign]/page": "app/horoscope/[sign]/page.js",
+  "/birth-chart/page": "app/birth-chart/page.js",
+  "/birth-chart/calculate/page": "app/birth-chart/calculate/page.js"
+}

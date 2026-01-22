@@ -1,0 +1,10 @@
+# robots.txt for Zodiak Astrology App
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://zodiak.life/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

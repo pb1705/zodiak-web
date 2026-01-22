@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Award-winning 2025 fonts: Luxury serif + Clean sans */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+@layer base {
+  body {
+    @apply bg-[#0F172A] text-white antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+  
+  h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+  
+  /* Refined input styling */
+  input[type="date"],
+  input[type="time"] {
+    color-scheme: dark;
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator:hover,
+  input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card - 2025 award-winning style */
+  .card-minimal {
+    @apply bg-white/[0.02] backdrop-blur-sm;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .card-minimal:hover {
+    @apply bg-white/[0.04];
+    border-color: rgba(99, 179, 237, 0.15);
+    box-shadow: 0 20px 60px rgba(99, 179, 237, 0.1);
+  }
+  
+  /* Trust blue button - primary CTA */
+  .btn-trust {
+    @apply bg-[#63B3ED] text-[#0F172A] rounded-none font-medium;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid #63B3ED;
+  }
+  
+  .btn-trust:hover {
+    @apply bg-[#7DD3FC] border-[#7DD3FC];
+    box-shadow: 0 20px 40px rgba(99, 179, 237, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  /* Minimal outline button */
+  .btn-minimal {
+    @apply px-8 py-3 border border-white/[0.15] rounded-none font-light;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-minimal:hover {
+    @apply bg-white text-[#0F172A] border-white;
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Mono labels */
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+    @apply tracking-wider;
+  }
+  
+  /* Premium input styling */
+  .input-premium {
+    @apply w-full bg-transparent border-b border-white/10 py-4 text-xl font-light transition-all duration-500 outline-none;
+  }
+  
+  .input-premium:focus {
+    @apply border-white/30;
+  }
+  
+  .input-premium::placeholder {
+    @apply text-white/20;
+  }
+  
+  /* Elegant card with subtle glow */
+  .card-glow {
+    @apply relative bg-white/[0.02] border border-white/[0.05] transition-all duration-700;
+  }
+  
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, rgba(99, 179, 237, 0.1) 0%, transparent 50%, rgba(129, 140, 248, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.7s;
+    pointer-events: none;
+  }
+  
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+  
+  .card-glow:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@layer utilities {
+  /* App color palette */
+  .text-trust {
+    color: #63B3ED;
+  }
+  
+  .text-trust-light {
+    color: #7DD3FC;
+  }
+  
+  .text-growth {
+    color: #48BB78;
+  }
+  
+  .text-growth-light {
+    color: #34D399;
+  }
+  
+  .text-premium {
+    color: #818CF8;
+  }
+  
+  .text-energy {
+    color: #F59E0B;
+  }
+  
+  /* Border colors */
+  .border-trust {
+    border-color: rgba(99, 179, 237, 0.2);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #63B3ED 0%, #818CF8 50%, #EC4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Subtle noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+  
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(99, 179, 237, 0.3);
+  color: white;
+}
+
+/* Minimal scrollbar - award-winning style */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/20;
+}
+
+/* Remove default focus rings, add custom */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 1px solid rgba(99, 179, 237, 0.5);
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 179, 237, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(99, 179, 237, 0.2); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
