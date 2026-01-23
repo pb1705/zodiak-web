@@ -345,7 +345,9 @@ export default function DailyCosmicCalculate() {
                 <div className="card-minimal p-10 rounded-none">
                   <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/[0.05]">
                     <div className="w-12 h-12 rounded-full bg-[#818CF8]/10 flex items-center justify-center border border-[#818CF8]/20">
-                      <StarIcon size={20} style={{ color: '#818CF8' }} />
+                      <div style={{ color: '#818CF8' }}>
+                        <StarIcon size={20} />
+                      </div>
                     </div>
                     <h2 className="text-2xl font-light">Your Birth Details</h2>
                   </div>
@@ -447,7 +449,9 @@ export default function DailyCosmicCalculate() {
                   return (
                     <div key={i} className="card-minimal p-6 rounded-none text-center">
                       <div className="mb-4">
-                        <InfoIcon size={32} className="mx-auto" style={{ color: item.color }} />
+                        <div className="mx-auto" style={{ color: item.color }}>
+                          <InfoIcon size={32} />
+                        </div>
                       </div>
                       <h3 className="text-lg font-light mb-2">{item.title}</h3>
                       <p className="text-sm text-white/40 font-light leading-relaxed">{item.text}</p>

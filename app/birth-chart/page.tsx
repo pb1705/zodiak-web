@@ -78,8 +78,8 @@ export default function BirthChartPage() {
           ].map((item, i) => (
             <Link key={i} href="/birth-chart/calculate" className="h-full">
               <div className="card-minimal p-8 rounded-none group hover:bg-white/[0.04] transition-all duration-700 cursor-pointer h-full flex flex-col">
-                <div className="mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <item.icon size={32} style={{ color: item.color }} />
+                <div className="mb-6 group-hover:scale-110 transition-transform duration-500" style={{ color: item.color }}>
+                  <item.icon size={32} />
                 </div>
                 <h3 className="text-xl font-light mb-3">{item.title}</h3>
                 <p className="text-sm text-white/40 font-light leading-relaxed flex-grow">{item.desc}</p>

@@ -31,6 +31,7 @@ export interface PlanetData {
   nakshatra_lord: string;
   degree_str: string;
   psychological_strength: string;
+  speed?: number;
 }
 
 export interface HouseData {
@@ -41,6 +42,7 @@ export interface HouseData {
   ruler: string;
   planets_in_house: string[];
   interpretation: string;
+  intercepted_sign?: string;
 }
 
 export interface AspectData {
@@ -100,6 +102,7 @@ export interface NatalChartResponse {
   modality_interpretation: string;
   hemisphere_interpretation: string;
   generated_at: string;
+  calculation_notes?: string;
 }
 
 /**

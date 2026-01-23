@@ -369,7 +369,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                     <div className="card-minimal p-6 rounded-none">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-full bg-[#FF6B6B]/10 flex items-center justify-center border border-[#FF6B6B]/20">
-                          <HeartIcon size={18} style={{ color: '#FF6B6B' }} />
+                          <div style={{ color: '#FF6B6B' }}>
+                            <HeartIcon size={18} />
+                          </div>
                         </div>
                         <h3 className="text-xl font-light">Love</h3>
                         {currentHoroscope.area_ratings?.love && (
@@ -384,7 +386,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                     <div className="card-minimal p-6 rounded-none">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-full bg-[#63B3ED]/10 flex items-center justify-center border border-[#63B3ED]/20">
-                          <BrainIcon size={18} style={{ color: '#63B3ED' }} />
+                          <div style={{ color: '#63B3ED' }}>
+                            <BrainIcon size={18} />
+                          </div>
                         </div>
                         <h3 className="text-xl font-light">Career</h3>
                         {currentHoroscope.area_ratings?.career && (
@@ -399,7 +403,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                     <div className="card-minimal p-6 rounded-none">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-full bg-[#48BB78]/10 flex items-center justify-center border border-[#48BB78]/20">
-                          <TrendingIcon size={18} style={{ color: '#48BB78' }} />
+                          <div style={{ color: '#48BB78' }}>
+                            <TrendingIcon size={18} />
+                          </div>
                         </div>
                         <h3 className="text-xl font-light">Money</h3>
                         {currentHoroscope.area_ratings?.money && (
@@ -414,7 +420,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                     <div className="card-minimal p-6 rounded-none">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-full bg-[#F59E0B]/10 flex items-center justify-center border border-[#F59E0B]/20">
-                          <SparklesIcon size={18} style={{ color: '#F59E0B' }} />
+                          <div style={{ color: '#F59E0B' }}>
+                            <SparklesIcon size={18} />
+                          </div>
                         </div>
                         <h3 className="text-xl font-light">Health</h3>
                         {currentHoroscope.area_ratings?.health && (
@@ -429,7 +437,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                     <div className="card-minimal p-6 rounded-none">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-full bg-[#818CF8]/10 flex items-center justify-center border border-[#818CF8]/20">
-                          <CompassIcon size={18} style={{ color: '#818CF8' }} />
+                          <div style={{ color: '#818CF8' }}>
+                            <CompassIcon size={18} />
+                          </div>
                         </div>
                         <h3 className="text-xl font-light">Spirituality</h3>
                         {currentHoroscope.area_ratings?.spirituality && (
@@ -448,7 +458,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                   {currentHoroscope.do_this && currentHoroscope.do_this.length > 0 && (
                     <div className="card-minimal p-6 rounded-none border-[#48BB78]/20 bg-[#48BB78]/5">
                       <div className="flex items-center gap-2 mb-4">
-                        <TargetIcon size={18} style={{ color: '#48BB78' }} />
+                        <div style={{ color: '#48BB78' }}>
+                          <TargetIcon size={18} />
+                        </div>
                         <h3 className="text-lg font-light">Do This</h3>
                       </div>
                       <ul className="space-y-2">
@@ -465,7 +477,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                   {currentHoroscope.avoid_this && currentHoroscope.avoid_this.length > 0 && (
                     <div className="card-minimal p-6 rounded-none border-[#EF4444]/20 bg-[#EF4444]/5">
                       <div className="flex items-center gap-2 mb-4">
-                        <InfoIcon size={18} style={{ color: '#EF4444' }} />
+                        <div style={{ color: '#EF4444' }}>
+                          <InfoIcon size={18} />
+                        </div>
                         <h3 className="text-lg font-light">Avoid This</h3>
                       </div>
                       <ul className="space-y-2">
@@ -487,7 +501,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                 {currentHoroscope.power_periods && currentHoroscope.power_periods.length > 0 && (
                   <div className="card-minimal p-6 rounded-none">
                     <div className="flex items-center gap-2 mb-4">
-                      <ClockIcon size={18} style={{ color: '#63B3ED' }} />
+                      <div style={{ color: '#63B3ED' }}>
+                        <ClockIcon size={18} />
+                      </div>
                       <h3 className="text-lg font-light">Power Periods</h3>
                     </div>
                     <ul className="space-y-2">
@@ -505,7 +521,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
                 {currentHoroscope.caution_periods && currentHoroscope.caution_periods.length > 0 && (
                   <div className="card-minimal p-6 rounded-none border-[#F59E0B]/20 bg-[#F59E0B]/5">
                     <div className="flex items-center gap-2 mb-4">
-                      <InfoIcon size={18} style={{ color: '#F59E0B' }} />
+                      <div style={{ color: '#F59E0B' }}>
+                        <InfoIcon size={18} />
+                      </div>
                       <h3 className="text-lg font-light">Caution Periods</h3>
                     </div>
                     <ul className="space-y-2">
@@ -524,7 +542,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
               {(currentHoroscope.lucky_numbers || currentHoroscope.lucky_colors || currentHoroscope.lucky_days || currentHoroscope.lucky_direction) && (
                 <div className="card-minimal p-6 rounded-none">
                   <h3 className="text-lg font-light mb-4 flex items-center gap-2">
-                    <SparklesIcon size={18} style={{ color: '#818CF8' }} />
+                    <div style={{ color: '#818CF8' }}>
+                      <SparklesIcon size={18} />
+                    </div>
                     Lucky Elements
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -582,7 +602,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
               {/* Daily Mantra */}
               {currentHoroscope.daily_mantra && (
                 <div className="card-minimal p-8 rounded-none text-center border-[#818CF8]/20 bg-[#818CF8]/5">
-                  <SparklesIcon size={24} className="mx-auto mb-4" style={{ color: '#818CF8' }} />
+                  <div className="mx-auto mb-4" style={{ color: '#818CF8' }}>
+                    <SparklesIcon size={24} />
+                  </div>
                   <p className="text-lg text-white/80 font-light italic leading-relaxed">
                     "{currentHoroscope.daily_mantra}"
                   </p>
@@ -593,7 +615,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
               {currentHoroscope.key_dates && Object.keys(currentHoroscope.key_dates).length > 0 && (
                 <div className="card-minimal p-6 rounded-none">
                   <h3 className="text-lg font-light mb-4 flex items-center gap-2">
-                    <CalendarIcon size={18} style={{ color: '#63B3ED' }} />
+                    <div style={{ color: '#63B3ED' }}>
+                      <CalendarIcon size={18} />
+                    </div>
                     Key Dates
                   </h3>
                   <div className="space-y-3">
@@ -642,7 +666,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
               {currentHoroscope.astronomical_summary && (
                 <div className="card-minimal p-6 rounded-none">
                   <h3 className="text-lg font-light mb-4 flex items-center gap-2">
-                    <GlobeIcon size={18} style={{ color: '#63B3ED' }} />
+                    <div style={{ color: '#63B3ED' }}>
+                      <GlobeIcon size={18} />
+                    </div>
                     Astronomical Summary
                   </h3>
                   <p className="text-sm text-white/60 font-light leading-relaxed">
@@ -655,7 +681,9 @@ export default function HoroscopeDetailClient({ sign }: HoroscopeDetailClientPro
               {currentHoroscope.active_transits && currentHoroscope.active_transits.length > 0 && (
                 <div className="card-minimal p-6 rounded-none">
                   <h3 className="text-lg font-light mb-4 flex items-center gap-2">
-                    <CompassIcon size={18} style={{ color: '#63B3ED' }} />
+                    <div style={{ color: '#63B3ED' }}>
+                      <CompassIcon size={18} />
+                    </div>
                     Active Transits
                   </h3>
                   <ul className="space-y-2">

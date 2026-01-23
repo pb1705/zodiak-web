@@ -178,7 +178,9 @@ export default function CompatibilityCalculatePage() {
                 className="text-center mb-12"
               >
                 <div className="inline-flex items-center gap-3 mb-6 px-5 py-2 rounded-full bg-white/[0.03] border border-white/[0.08]">
-                  <CurrentIcon size={20} style={{ color: currentType.color }} />
+                  <div style={{ color: currentType.color }}>
+                    <CurrentIcon size={20} />
+                  </div>
                   <span className="mono text-[10px] text-white/40 tracking-[0.3em]">COMPATIBILITY CALCULATOR</span>
                 </div>
                 
@@ -232,7 +234,9 @@ export default function CompatibilityCalculatePage() {
                           }`}
                           style={isActive ? { borderColor: type.color } : {}}
                         >
-                          <Icon size={24} className="mx-auto mb-2" style={{ color: isActive ? type.color : 'rgba(255,255,255,0.4)' }} />
+                          <div className="mx-auto mb-2" style={{ color: isActive ? type.color : 'rgba(255,255,255,0.4)' }}>
+                            <Icon size={24} />
+                          </div>
                           <div className="text-xs font-light text-center" style={{ color: isActive ? type.color : 'rgba(255,255,255,0.6)' }}>
                             {type.label}
                           </div>
@@ -246,7 +250,9 @@ export default function CompatibilityCalculatePage() {
                 <div className="card-minimal p-10 rounded-none">
                   <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/[0.05]">
                     <div className="w-12 h-12 rounded-full bg-[#FF6B6B]/10 flex items-center justify-center border border-[#FF6B6B]/20">
-                      <UsersIcon size={20} style={{ color: '#FF6B6B' }} />
+                      <div style={{ color: '#FF6B6B' }}>
+                        <UsersIcon size={20} />
+                      </div>
                     </div>
                     <h2 className="text-2xl font-light">Person 1</h2>
                   </div>
@@ -319,7 +325,9 @@ export default function CompatibilityCalculatePage() {
                 <div className="card-minimal p-10 rounded-none">
                   <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/[0.05]">
                     <div className="w-12 h-12 rounded-full bg-[#63B3ED]/10 flex items-center justify-center border border-[#63B3ED]/20">
-                      <UsersIcon size={20} style={{ color: '#63B3ED' }} />
+                      <div style={{ color: '#63B3ED' }}>
+                        <UsersIcon size={20} />
+                      </div>
                     </div>
                     <h2 className="text-2xl font-light">Person 2</h2>
                   </div>
@@ -424,7 +432,9 @@ export default function CompatibilityCalculatePage() {
                   return (
                     <div key={i} className="card-minimal p-6 rounded-none text-center">
                       <div className="mb-4">
-                        <InfoIcon size={32} className="mx-auto" style={{ color: item.color }} />
+                        <div className="mx-auto" style={{ color: item.color }}>
+                          <InfoIcon size={32} />
+                        </div>
                       </div>
                       <h3 className="text-lg font-light mb-2">{item.title}</h3>
                       <p className="text-sm text-white/40 font-light leading-relaxed">{item.text}</p>
@@ -444,7 +454,9 @@ export default function CompatibilityCalculatePage() {
             {/* Result Display */}
             <div className="card-minimal p-8 rounded-none text-center mb-8">
               <div className="flex items-center justify-center gap-4 mb-6">
-                <CurrentIcon size={48} style={{ color: currentType.color }} />
+                <div style={{ color: currentType.color }}>
+                  <CurrentIcon size={48} />
+                </div>
                 <div>
                   <h1 className="text-4xl font-light mb-2">{result.overall_score}/100</h1>
                   <p className="text-lg text-white/60 font-light">{result.rating}</p>
@@ -525,12 +537,16 @@ export default function CompatibilityCalculatePage() {
             {result.advice && result.advice.length > 0 && (
               <div className="mb-8">
                 <h3 className="text-xl font-light mb-4 flex items-center gap-2">
-                  <SparklesIcon size={20} style={{ color: '#818CF8' }} /> Guidance
+                  <div style={{ color: '#818CF8' }}>
+                    <SparklesIcon size={20} />
+                  </div> Guidance
                 </h3>
                 <div className="space-y-3">
                   {result.advice.map((item, index) => (
                     <div key={index} className="card-minimal p-4 rounded-none flex items-start gap-3">
-                      <SparklesIcon size={16} style={{ color: '#818CF8' }} />
+                      <div style={{ color: '#818CF8' }}>
+                        <SparklesIcon size={16} />
+                      </div>
                       <p className="text-white/70 flex-1">{item}</p>
                     </div>
                   ))}

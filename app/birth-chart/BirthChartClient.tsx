@@ -278,7 +278,7 @@ export default function BirthChartClient() {
                 <div className="card-minimal p-10 rounded-none">
                   <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/[0.05]">
                     <div className="w-12 h-12 rounded-full bg-[#818CF8]/10 flex items-center justify-center border border-[#818CF8]/20">
-                      <CompassIcon size={20} style={{ color: '#818CF8' }} />
+                      <CompassIcon size={20} className="text-[#818CF8]" />
                     </div>
                       <h2 className="text-2xl font-light">Your Birth Details</h2>
                   </div>
@@ -380,7 +380,9 @@ export default function BirthChartClient() {
                   return (
                     <div key={i} className="card-minimal p-6 rounded-none text-center">
                       <div className="mb-4">
-                        <InfoIcon size={32} className="mx-auto" style={{ color: item.color }} />
+                        <div className="mx-auto" style={{ color: item.color }}>
+                          <InfoIcon size={32} />
+                        </div>
                       </div>
                       <h3 className="text-lg font-light mb-2">{item.title}</h3>
                       <p className="text-sm text-white/40 font-light leading-relaxed">{item.text}</p>
@@ -489,7 +491,9 @@ export default function BirthChartClient() {
                         <div key={item.label} className="card-minimal p-6 rounded-none group hover:bg-white/[0.03] transition-all duration-500">
                           <div className="flex items-center gap-3 mb-3">
                             <div className="p-2 rounded-full bg-white/[0.02]" style={{ border: `1px solid ${item.color}20` }}>
-                              <item.icon size={16} style={{ color: item.color }} />
+                              <div style={{ color: item.color }}>
+                                <item.icon size={16} />
+                              </div>
                             </div>
                             <span className="mono text-[9px] text-white/25 tracking-[0.3em] uppercase">{item.label}</span>
                           </div>
@@ -596,7 +600,9 @@ export default function BirthChartClient() {
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-5">
                               <div className="p-3 rounded-full bg-white/[0.02]" style={{ border: `1px solid ${angle.color}20` }}>
-                                <angle.icon size={20} style={{ color: angle.color }} />
+                                <div style={{ color: angle.color }}>
+                                  <angle.icon size={20} />
+                                </div>
                               </div>
                               <div>
                                 <h3 className="text-xl font-light mb-2 tracking-tight">{angle.name}</h3>
@@ -926,8 +932,10 @@ export default function BirthChartClient() {
                                   {capitalize(aspect.point1)}
                               </span>
                                 <div className="p-2 rounded-full bg-white/[0.02]" style={{ border: `1px solid ${aspectColor}30` }}>
-                              <AspectIcon size={18} style={{ color: aspectColor }} />
-                                </div>
+                              <div style={{ color: aspectColor }}>
+                                <AspectIcon size={18} />
+                              </div>
+                            </div>
                               <span 
                                   className="font-light text-lg tracking-tight"
                                 style={{ color: planetColors[aspect.point2] || '#fff' }}
@@ -1043,7 +1051,9 @@ export default function BirthChartClient() {
                                             chartData.dominant_element === 'Air' ? AirIcon : WaterIcon;
                           return (
                             <div className="p-4 rounded-full bg-white/[0.02]" style={{ border: `1px solid ${elementColors[chartData.dominant_element] || '#fff'}30` }}>
-                              <ElementIcon size={28} style={{ color: elementColors[chartData.dominant_element] || '#fff' }} />
+                              <div style={{ color: elementColors[chartData.dominant_element] || '#fff' }}>
+                                <ElementIcon size={28} />
+                              </div>
                             </div>
                           );
                         })()}

@@ -1,15 +1,19 @@
 version: '3.8'
 
+# Production Docker Compose using pre-built image from registry
+# Update IMAGE_NAME below with your Docker Hub or GHCR image name
+# Example: your-username/zodiak-website:latest
+# Example: ghcr.io/your-username/zodiak-website:latest
+
 services:
   nextjs:
-    # Replace with your Docker Hub or GHCR image
-    image: prranav1705/landing:latest
-    # Or: ghcr.io/YOUR_GITHUB_USERNAME/zodiak-website:latest
+    # UPDATE THIS with your image name from Docker Hub or GHCR
+    image: ${DOCKER_IMAGE:-prranav1705/zodiak-website:latest}
     container_name: zodiak-nextjs
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_BASE_URL=https://zodiak.life
+      - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL:-https://zodiak.life}
       - PORT=3000
     # IMPORTANT: Do NOT expose port 3000 to host (Grafana uses it)
     # Next.js is only accessible via Docker network through Nginx
@@ -40,6 +44,11 @@ services:
       - nextjs
     networks:
       - zodiak-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
   zodiak-network:

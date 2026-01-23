@@ -109,16 +109,36 @@ export default function Home() {
               { num: '06', title: 'Horoscopes', detail: 'Daily, weekly, monthly, yearly', icon: MoonIcon, href: '/horoscope' },
             ].map((item, i) => (
               <Link key={item.num} href={item.href}>
-                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: i * 0.08, duration: 0.6 }} className="group flex items-center gap-6 md:gap-8 py-8 md:py-10 border-b border-white/[0.03] last:border-none hover:bg-white/[0.01] transition-all duration-700 px-4 md:px-8 cursor-pointer">
-                  <span className="text-4xl opacity-60 group-hover:scale-110 transition-transform duration-500">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }} 
+                  whileInView={{ opacity: 1, y: 0 }} 
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ 
+                    delay: i * 0.1, 
+                    duration: 0.8,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }} 
+                  className="group flex items-center gap-6 md:gap-8 py-8 md:py-10 border-b border-white/[0.03] last:border-none hover:bg-white/[0.01] transition-all duration-700 px-4 md:px-8 cursor-pointer"
+                >
+                  <motion.span 
+                    className="text-4xl opacity-60 group-hover:opacity-100"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <item.icon size={40} className="text-white/60" />
-                  </span>
+                  </motion.span>
                   <span className="mono text-[10px] text-white/20 tracking-widest w-12">{item.num}</span>
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-light flex-1">{item.title}</h3>
                   <p className="text-sm text-white/30 font-light text-right mono tracking-wide hidden lg:block">{item.detail}</p>
-                  <motion.svg className="w-6 h-6 text-white/10 group-hover:text-trust transition-colors duration-500" initial={{ x: 0 }}
-                    whileHover={{ x: 6 }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <motion.svg 
+                    className="w-6 h-6 text-white/10 group-hover:text-trust transition-colors duration-500" 
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 6 }}
+                    transition={{ duration: 0.3 }}
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5l7 7-7 7" />
                   </motion.svg>
                 </motion.div>
@@ -171,7 +191,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 className="relative"
               >
-                <ZodiakLogo size={180} />
+                <ZodiakLogo size={320} />
               </motion.div>
             </div>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 md:mb-12 leading-none tracking-tight">Begin your<br />cosmic journey</h2>
