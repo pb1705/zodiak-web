@@ -15,9 +15,9 @@ export default function CelestialHero() {
           fill
           className="object-cover md:object-cover"
           priority
-          quality={100}
+          fetchPriority="high"
+          quality={85}
           sizes="100vw"
-          unoptimized
           style={{
             objectPosition: 'center 60%',
           }}
@@ -37,37 +37,41 @@ export default function CelestialHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            {/* Brand Name */}
+            {/* Brand + astrology in H1 for SEO (astrology-related search visibility) */}
             <div className="mb-6">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-2 leading-none tracking-tight">
                 Zodiak
               </h1>
+              <p className="text-[9px] md:text-[10px] text-white/50 tracking-[0.3em] uppercase mb-0 mono" aria-hidden="true">
+                Hyper-Personalized Astrology
+              </p>
             </div>
+            <p className="sr-only">Zodiak — Astrology, horoscope today, birth chart calculator, zodiac signs, natal chart, moon sign, rising sign, compatibility, planetary transits, Saturn return, Mercury retrograde. Free astrology readings. Vedic and Western. Expert astrologers 24/7.</p>
             
-            {/* Optional small label - minimal styling */}
-            <p className="text-[9px] md:text-[10px] text-white/30 tracking-[0.3em] uppercase mb-6 mono">
-              Hyper-Personalized Astrology
-            </p>
-            
-            {/* Main tagline - cleaner typography */}
+            {/* Main tagline - cleaner typography (contrast: white/60 for AA) */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-8 leading-[1.1] tracking-tight">
               The cosmos reaches<br />
-              <span className="text-white/50">for those who seek.</span>
+              <span className="text-white/70">for those who seek.</span>
             </h2>
             
-            <p className="text-sm sm:text-base md:text-lg text-white/40 font-light max-w-lg mx-auto mb-10 md:mb-12 leading-relaxed">
-              NASA-precision data meets ancient wisdom. Your birth chart decoded with clarity.
+            <p className="text-sm sm:text-base md:text-lg text-white/60 font-light max-w-lg mx-auto mb-10 md:mb-12 leading-relaxed">
+              NASA-precision astrology meets ancient wisdom. Your birth chart decoded with clarity.
             </p>
 
-            {/* Equal-width buttons - fixed sizing */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-              <Link href="/birth-chart/calculate" className="w-full sm:w-auto">
-                <button className="w-full sm:w-[240px] btn-trust py-4 text-xs sm:text-sm tracking-[0.1em] sm:tracking-[0.12em] uppercase font-medium whitespace-nowrap">
+            {/* Equal-width buttons - grid so all three same width at every breakpoint */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-[800px] mx-auto">
+              <Link href="#early-access" className="w-full min-w-0 flex justify-center sm:order-1 order-first">
+                <button type="button" className="w-full min-w-0 btn-minimal py-4 text-xs sm:text-sm tracking-[0.1em] sm:tracking-[0.12em] uppercase whitespace-nowrap">
+                  Early access
+                </button>
+              </Link>
+              <Link href="/birth-chart/calculate" className="w-full min-w-0 flex justify-center sm:order-2">
+                <button type="button" className="w-full min-w-0 btn-trust py-4 text-xs sm:text-sm tracking-[0.1em] sm:tracking-[0.12em] uppercase font-medium whitespace-nowrap">
                   Discover Your Chart
                 </button>
               </Link>
-              <Link href="#features" className="w-full sm:w-auto">
-                <button className="w-full sm:w-[240px] btn-minimal py-4 text-xs sm:text-sm tracking-[0.1em] sm:tracking-[0.12em] uppercase whitespace-nowrap">
+              <Link href="#features" className="w-full min-w-0 flex justify-center sm:order-3">
+                <button type="button" className="w-full min-w-0 btn-minimal py-4 text-xs sm:text-sm tracking-[0.1em] sm:tracking-[0.12em] uppercase whitespace-nowrap">
                   Explore Features
                 </button>
               </Link>
@@ -79,7 +83,7 @@ export default function CelestialHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="mt-12 md:mt-16 pb-20 md:pb-24 flex flex-wrap items-center justify-center gap-6 md:gap-12 mono text-[9px] md:text-[10px] text-white/25 tracking-[0.2em] uppercase"
+            className="mt-12 md:mt-16 pb-20 md:pb-24 flex flex-wrap items-center justify-center gap-6 md:gap-12 mono text-[9px] md:text-[10px] text-white/45 tracking-[0.2em] uppercase"
           >
             <div className="text-center">
               <div className="text-trust text-xs md:text-sm mb-1">NASA</div>
@@ -109,7 +113,7 @@ export default function CelestialHero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border border-white/20 rounded-full flex justify-center pt-2"
+          className="w-6 h-10 border border-white/35 rounded-full flex justify-center pt-2"
         >
           <div className="w-1 h-2 bg-[#63B3ED]/60 rounded-full" />
         </motion.div>

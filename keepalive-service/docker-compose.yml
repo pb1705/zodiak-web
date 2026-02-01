@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  keepalive:
+    build: .
+    container_name: keepalive-service
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

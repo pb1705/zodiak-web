@@ -7,12 +7,12 @@ import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, getHreflangUrl } from '@/lib/lan
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 
 export const metadata: Metadata = {
-  title: 'Birth Chart Calculator — Free Natal Chart Analysis | Zodiak',
-  description: 'Generate your complete natal birth chart with detailed planetary positions, house placements, and aspects. Free birth chart calculator powered by NASA data. Accurate astronomical calculations combined with Vedic and Western astrology interpretations.',
-  keywords: ['birth chart', 'natal chart', 'astrology chart', 'planetary positions', 'house placements', 'aspects', 'zodiac signs', 'ascendant', 'moon sign', 'sun sign', 'rising sign calculator', 'free birth chart', 'birth chart analysis'],
+  title: 'Birth Chart Calculator — Free Natal Chart | Zodiak',
+  description: 'Free birth chart calculator with planetary positions, houses, and aspects. NASA data. Vedic and Western astrology. Get your natal chart in minutes.',
+  keywords: ['birth chart', 'birth chart calculator', 'natal chart', 'free birth chart', 'astrology chart', 'planetary positions', 'house placements', 'aspects', 'zodiac signs', 'ascendant', 'rising sign', 'moon sign', 'sun sign', 'rising sign calculator', 'moon sign calculator', 'birth chart analysis', 'natal chart free', 'birth chart free', 'Vedic birth chart', 'Western birth chart', 'chart ruler', 'planetary aspects'],
   openGraph: {
-    title: 'Birth Chart Calculator — Free Natal Chart Analysis | Zodiak',
-    description: 'Generate your complete natal birth chart with detailed planetary positions, house placements, and aspects. Powered by NASA data.',
+    title: 'Birth Chart Calculator — Free Natal Chart | Zodiak',
+    description: 'Free birth chart calculator with planetary positions, houses, aspects. NASA data. Vedic and Western astrology.',
     url: `${baseUrl}/birth-chart`,
     type: 'website',
     locale: DEFAULT_LANGUAGE.locale,

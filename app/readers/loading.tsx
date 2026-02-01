@@ -10,9 +10,9 @@ export default function Loading() {
           <span className="mono text-[10px] text-white/40 tracking-[0.3em]">EXPERT GUIDANCE</span>
         </div>
         
-        <h1 className="text-6xl md:text-8xl font-light mb-8 leading-none">
+        <div className="text-6xl md:text-8xl font-light mb-8 leading-none" aria-hidden="true">
           Talk to Expert<br />Astrologers
-        </h1>
+        </div>
         
         <p className="text-xl text-white/50 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
           Certified professional astrologers available 24/7 for personalized readings and spiritual guidance

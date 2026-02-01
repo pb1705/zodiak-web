@@ -8,12 +8,12 @@ import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, getHreflangUrl } from '@/lib/lan
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 
 export const metadata: Metadata = {
-  title: 'Compatibility Analysis — Love, Work, Friendship Compatibility | Zodiak',
-  description: 'Comprehensive compatibility analysis powered by NASA data. Compare birth charts for love, friendship, work, and family relationships. Get Vedic Guna Milan scores and Western synastry insights. Free compatibility calculator.',
-  keywords: ['love compatibility astrology', 'relationship compatibility', 'synastry chart', 'Guna Milan', 'zodiac compatibility', 'birth chart compatibility', 'relationship astrology', 'partner compatibility', 'friendship compatibility', 'work compatibility', 'compatibility calculator', 'astrology compatibility test'],
+  title: 'Compatibility Analysis — Love & Relationship | Zodiak',
+  description: 'Free compatibility analysis: love, friendship, work. Guna Milan and Western synastry. Compare birth charts. NASA data.',
+  keywords: ['love compatibility', 'relationship compatibility', 'zodiac compatibility', 'synastry', 'synastry chart', 'Guna Milan', 'birth chart compatibility', 'relationship astrology', 'partner compatibility', 'friendship compatibility', 'work compatibility', 'compatibility calculator', 'astrology compatibility', 'moon sign compatibility', 'sun sign compatibility', 'compatibility report', 'love match astrology', 'couple compatibility', 'Vedic compatibility', 'Western synastry'],
   openGraph: {
-    title: 'Compatibility Analysis — Love, Work, Friendship Compatibility | Zodiak',
-    description: 'Comprehensive compatibility analysis powered by NASA data. Compare birth charts for love, friendship, work, and family relationships.',
+    title: 'Compatibility Analysis — Love & Relationship | Zodiak',
+    description: 'Free compatibility analysis: love, friendship, work. Guna Milan and synastry. Compare birth charts. NASA data.',
     url: `${baseUrl}/compatibility`,
     type: 'website',
     locale: DEFAULT_LANGUAGE.locale,

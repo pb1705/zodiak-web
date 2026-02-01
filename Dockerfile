@@ -28,4 +28,8 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
+# App env (single-team project: set in image; override via docker-compose if needed)
+ENV NEXT_PUBLIC_BASE_URL=https://zodiak.life
+ENV ADMIN_SECRET=zodiak-admin-secret
+
 CMD ["node", "server.js"]

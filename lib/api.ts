@@ -1,6 +1,6 @@
 // API utility functions for fetching real data
 
-const HOROSCOPE_API_BASE = 'https://prediction-service-latest-o30p.onrender.com/api';
+const HOROSCOPE_API_BASE = 'https://prediction.zodiak.life/api';
 const READERS_API_BASE = 'https://eclipse-mosquitto-vmzh.onrender.com/api/v1/web';
 
 // ==================== NATAL CHART TYPES ====================
@@ -595,26 +595,106 @@ export interface HoroscopeResponse {
 // ==================== COMPATIBILITY TYPES ====================
 
 export interface CompatibilityData {
-  name: string;
+  name?: string;
   date: string;
   time: string;
   latitude: number;
   longitude: number;
   timezone: string;
+  gender?: string;
+}
+
+export interface KootScoreDetails {
+  tier: 'low' | 'medium' | 'high';
+  person1_value: string;
+  person2_value: string;
+  strengths?: string[];
+  growth_areas?: string[];
+  advice: string;
+  [key: string]: any; // For additional fields like varna1, varna2, etc.
+}
+
+export interface KootScore {
+  name: string;
+  max_points: number;
+  obtained_points: number;
+  description: string;
+  details: KootScoreDetails;
+}
+
+export interface DoshaRemedy {
+  type: 'practice' | 'traditional';
+  title: string;
+  desc: string;
+}
+
+export interface Dosha {
+  name: string;
+  traditional_name: string;
+  is_present: boolean;
+  is_cancelled: boolean;
+  severity: 'low' | 'medium' | 'significant';
+  description: string;
+  impact: string;
+  remedies: DoshaRemedy[];
+}
+
+export interface PersonDetails {
+  name: string;
+  moon_sign: string;
+  nakshatra: string;
+  nakshatra_pada?: number;
+  temperament: string;
+  temperament_archetype: string;
+  temperament_traits?: string[];
+  intimacy_style: string;
+  intimacy_essence?: string;
+  constitution: string;
+  constitution_qualities?: string[];
+}
+
+export interface SynastryAspect {
+  planet1: string;
+  planet2: string;
+  aspect_type: string;
+  orb: number;
+  weight: number;
+  is_harmonious: boolean;
+  interpretation: string;
+}
+
+export interface ElementCompatibility {
+  person1_sun_element: string;
+  person2_sun_element: string;
+  person1_moon_element: string;
+  person2_moon_element: string;
+  sun_compatibility: number;
+  moon_compatibility: number;
+  average: number;
+  interpretation: string;
 }
 
 export interface CompatibilityResponse {
+  compatibility_type: string;
   overall_score: number;
   rating: string;
-  strengths?: string[];
-  challenges?: string[];
-  advice?: string[];
-  guna_milan?: {
+  guna_milan: {
     total_points: number;
     max_points: number;
     percentage: number;
     recommendation: string;
+    koot_scores: KootScore[];
+    doshas?: Dosha[];
+    person1_details: PersonDetails;
+    person2_details: PersonDetails;
   };
+  synastry_aspects?: SynastryAspect[];
+  element_compatibility?: ElementCompatibility;
+  strengths: string[];
+  challenges: string[];
+  advice: string[];
+  detailed_interpretation: string;
+  generated_at: string;
 }
 
 /**
@@ -634,7 +714,11 @@ export async function fetchCompatibility(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ person1, person2 }),
+      body: JSON.stringify({ 
+        compatibility_type: type,
+        person1, 
+        person2 
+      }),
       cache: 'no-store' // Don't cache compatibility calculations
     });
 

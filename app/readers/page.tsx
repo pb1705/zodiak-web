@@ -11,8 +11,8 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 
 export const metadata: Metadata = {
   title: 'Expert Astrologers — Live Consultations 24/7 | Zodiak',
-  description: 'Connect with certified professional astrologers for personalized readings. Live consultations available 24/7. Specializing in love, career, spiritual guidance, and life transitions. Average rating 4.8+ stars.',
-  keywords: ['astrologer consultation', 'live astrology reading', 'professional astrologer', 'psychic reading online', 'tarot card reading', 'spiritual counselor', 'relationship advisor', 'career astrologer', '24/7 astrology', 'certified astrologer', 'online astrologer', 'astrology consultation'],
+  description: 'Certified astrologers for personalized readings. Live 24/7. Love, career, spiritual guidance. Average rating 4.8+ stars.',
+  keywords: ['astrologer consultation', 'live astrology reading', 'professional astrologer', 'online astrologer', 'astrology consultation', 'psychic reading online', 'tarot reading', 'spiritual counselor', 'relationship advisor', 'career astrologer', '24/7 astrology', 'certified astrologer', 'astrology reading', 'birth chart reading', 'horoscope reading', 'love reading astrology', 'career reading astrology', 'expert astrologer', 'book astrologer'],
   openGraph: {
     title: 'Expert Astrologers — Live Consultations 24/7 | Zodiak',
     description: 'Connect with certified professional astrologers for personalized readings. Live consultations available 24/7.',

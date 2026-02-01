@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  keepalive:
+    build:
+      context: .
+      dockerfile: Dockerfile.keepalive
+    container_name: keepalive-service
+    restart: unless-stopped
+    # Optional: Add logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

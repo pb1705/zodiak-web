@@ -27,32 +27,52 @@ export default function LocationInput({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
+  const DROPDOWN_MAX_HEIGHT = 240; // max-h-60 = 15rem
+  const [dropdownPosition, setDropdownPosition] = useState({
+    top: 0,
+    inputTop: 0,
+    left: 0,
+    width: 0,
+    openAbove: false
+  });
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Update dropdown position relative to input
+  // Update dropdown position relative to input; prefer below, open above only when not enough space below
   const updateDropdownPosition = useCallback(() => {
-    if (inputRef.current) {
+    if (inputRef.current && typeof window !== 'undefined') {
       const rect = inputRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const spaceAbove = rect.top;
+      const openAbove = spaceBelow < Math.min(DROPDOWN_MAX_HEIGHT, spaceAbove);
       setDropdownPosition({
-        top: rect.bottom + 4, // Use viewport coordinates for fixed positioning
+        top: rect.bottom + 4,
+        inputTop: rect.top,
         left: rect.left,
-        width: rect.width
+        width: rect.width,
+        openAbove
       });
     }
   }, []);
 
-  // Update position on scroll/resize/input changes
+  // Update position on scroll/resize; recalculate after layout settles (keyboard, etc.)
   useEffect(() => {
     if (showSuggestions && inputRef.current) {
-      updateDropdownPosition();
+      const runUpdate = () => {
+        requestAnimationFrame(() => {
+          updateDropdownPosition();
+        });
+      };
+      runUpdate();
+      // Re-run after a short delay so mobile keyboard / viewport resize is accounted for
+      const t = setTimeout(runUpdate, 150);
       const handleScroll = () => updateDropdownPosition();
       const handleResize = () => updateDropdownPosition();
       window.addEventListener('scroll', handleScroll, true);
       window.addEventListener('resize', handleResize);
       return () => {
+        clearTimeout(t);
         window.removeEventListener('scroll', handleScroll, true);
         window.removeEventListener('resize', handleResize);
       };
@@ -204,7 +224,10 @@ export default function LocationInput({
           style={{ 
             backdropFilter: 'blur(20px)',
             zIndex: 10000,
-            top: `${dropdownPosition.top}px`,
+            ...(dropdownPosition.openAbove
+              ? { bottom: `${window.innerHeight - dropdownPosition.inputTop + 4}px` }
+              : { top: `${dropdownPosition.top}px` }
+            ),
             left: `${dropdownPosition.left}px`,
             width: `${dropdownPosition.width || inputRef.current.offsetWidth}px`,
             minWidth: '200px'

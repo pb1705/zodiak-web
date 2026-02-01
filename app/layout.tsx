@@ -1,37 +1,77 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, getHreflangUrl } from "@/lib/languages";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0F172A" },
+    { media: "(prefers-color-scheme: dark)", color: "#0F172A" },
+  ],
+};
+
+// SEO: title 50–60 chars, description 120–158 chars (2024 best practice)
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Zodiak — Hyper-Personalized Astrology | Birth Charts, Daily Horoscopes & Expert Readings",
+    default: "Astrology & Birth Chart | Zodiak — Horoscopes & Expert Readings",
     template: "%s | Zodiak"
   },
-  description: "Professional astrology app powered by NASA data. Get personalized birth charts, daily cosmic reports, compatibility analysis, transit tracking, and 24/7 expert consultations. High-precision astrological guidance combining Vedic and Western traditions.",
+  description: "Free astrology readings and birth charts. Daily horoscopes, compatibility, transits, and 24/7 expert astrology. NASA data. Vedic and Western.",
   keywords: [
-    "astrology app",
+    "astrology",
+    "horoscope",
+    "horoscope today",
+    "zodiac signs",
+    "astrology signs",
+    "daily horoscope",
+    "birth chart",
     "birth chart calculator",
-    "natal chart analysis",
-    "daily horoscope personalized",
-    "NASA astronomy data",
-    "professional astrologer consultation",
-    "relationship compatibility astrology",
-    "planetary transit tracking",
-    "moon phases calendar",
-    "Vedic astrology",
-    "Western astrology",
+    "natal chart",
+    "free birth chart",
+    "astrology chart",
+    "daily horoscope today",
+    "today horoscope",
+    "moon sign",
+    "rising sign",
+    "sun sign",
+    "ascendant",
     "rising sign calculator",
-    "accurate birth chart",
-    "daily cosmic report",
+    "moon sign calculator",
+    "astrology app",
+    "natal chart analysis",
+    "NASA astronomy data",
+    "professional astrologer",
+    "astrology reading",
     "astrology reading online",
-    "expert astrologer",
+    "relationship compatibility",
+    "zodiac compatibility",
+    "love compatibility",
+    "synastry",
+    "Guna Milan",
+    "planetary transits",
+    "transit forecast",
     "Saturn return",
     "mercury retrograde",
+    "moon phases",
+    "Vedic astrology",
+    "Western astrology",
+    "daily cosmic report",
+    "expert astrologer",
+    "online astrologer",
     "full moon meaning",
-    "zodiac signs compatibility"
+    "free astrology",
+    "personalized horoscope",
+    "astrology consultation",
+    "birth chart reading",
+    "weekly horoscope",
+    "monthly horoscope",
+    "yearly horoscope",
+    "love horoscope",
+    "career horoscope",
+    "compatibility chart"
   ],
   authors: [{ name: "Zodiak Team" }],
   creator: "Zodiak",
@@ -47,8 +87,8 @@ export const metadata: Metadata = {
     alternateLocale: SUPPORTED_LANGUAGES.filter(l => l.code !== DEFAULT_LANGUAGE.code).map(l => l.locale),
     url: baseUrl,
     siteName: "Zodiak",
-    title: "Zodiak — Hyper-Personalized Astrology | Birth Charts, Daily Horoscopes & Expert Readings",
-    description: "Professional astrology powered by NASA data. Birth charts, daily horoscopes, and 24/7 expert guidance.",
+    title: "Astrology & Birth Chart | Zodiak — Horoscopes & Expert Readings",
+    description: "Free astrology readings and birth charts. Daily horoscopes, compatibility, transits, and 24/7 expert astrology. NASA data. Vedic and Western.",
     images: [{
       url: `${baseUrl}/og-image.png`,
       width: 1200,
@@ -58,8 +98,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zodiak — Hyper-Personalized Astrology",
-    description: "Professional astrology powered by NASA data. Birth charts, daily horoscopes, and 24/7 expert guidance.",
+    title: "Astrology & Birth Chart | Zodiak — Horoscopes & Expert Readings",
+    description: "Free astrology readings and birth charts. Daily horoscopes, compatibility, transits, and 24/7 expert astrology. NASA data.",
     images: [`${baseUrl}/og-image.png`],
     creator: "@zodiak",
   },
@@ -109,7 +149,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" itemScope itemType="https://schema.org/WebSite">
       <head>
         {/* Hreflang Tags for Multi-Language Support */}
         {SUPPORTED_LANGUAGES.map(lang => (
@@ -130,14 +170,23 @@ export default function RootLayout({
         {/* Web App Manifest */}
         <link rel="manifest" href="/site.webmanifest" />
         
+        {/* Preconnect / dns-prefetch for performance (Core Web Vitals) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://hel1.your-objectstorage.com" />
+        <link rel="preconnect" href="https://hel1.your-objectstorage.com" crossOrigin="anonymous" />
+        
+        {/* Structured Data - MobileApplication (keyword-rich for search) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "MobileApplication",
-              "name": "Zodiak",
-              "description": "Professional astrology app powered by NASA data for personalized birth charts, daily cosmic reports, and expert consultations",
+              "name": "Zodiak — Astrology, Horoscope & Birth Chart",
+              "description": "Free astrology app: birth chart calculator, daily horoscope, zodiac signs, compatibility, planetary transits, moon sign, rising sign. NASA data. Vedic and Western astrology. Expert readings 24/7.",
               "applicationCategory": "LifestyleApplication",
               "operatingSystem": "iOS, Android",
               "url": baseUrl,
@@ -151,13 +200,21 @@ export default function RootLayout({
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD",
-                "description": "Free to start with premium features available"
+                "description": "Free birth chart, horoscope today, compatibility. Premium expert astrology consultations available."
               },
               "featureList": [
                 "Birth Chart Calculator",
-                "Daily Cosmic Reports",
+                "Natal Chart Free",
+                "Daily Horoscope",
+                "Horoscope Today",
+                "All 12 Zodiac Signs",
+                "Daily Cosmic Report",
                 "Compatibility Analysis",
-                "Transit Tracking",
+                "Synastry & Guna Milan",
+                "Planetary Transits",
+                "Saturn Return",
+                "Mercury Retrograde",
+                "Moon Sign & Rising Sign",
                 "Expert Astrologer Consultations",
                 "Moon Phase Guidance",
                 "Vedic & Western Astrology"
@@ -165,14 +222,18 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* Structured Data - WebSite with Search (astrology-focused for search visibility) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Zodiak",
+              "name": "Zodiak — Astrology, Horoscope Today & Birth Chart",
+              "description": "Free astrology: birth chart, horoscope today, zodiac signs, compatibility, transits, moon sign, rising sign. NASA data. Vedic and Western. Expert readings 24/7.",
               "url": baseUrl,
+              "inLanguage": "en",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
@@ -184,6 +245,8 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* Structured Data - Organization */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -201,13 +264,56 @@ export default function RootLayout({
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "Customer Support",
+                "email": "connect@zodiak.life",
                 "availableLanguage": "English"
               }
             })
           }}
         />
+        
+        {/* Structured Data - BreadcrumbList (Default) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": baseUrl
+                }
+              ]
+            })
+          }}
+        />
+        {/* Structured Data - ItemList of main services (astrology keywords for search) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "name": "Zodiak Astrology Services",
+              "description": "Birth chart, daily horoscope, compatibility, transits, and expert astrology readings.",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Birth Chart Calculator", "url": `${baseUrl}/birth-chart` },
+                { "@type": "ListItem", "position": 2, "name": "Daily Horoscope", "url": `${baseUrl}/horoscope` },
+                { "@type": "ListItem", "position": 3, "name": "Daily Cosmic Report", "url": `${baseUrl}/daily-cosmic` },
+                { "@type": "ListItem", "position": 4, "name": "Compatibility Analysis", "url": `${baseUrl}/compatibility` },
+                { "@type": "ListItem", "position": 5, "name": "Planetary Transits", "url": `${baseUrl}/transits` },
+                { "@type": "ListItem", "position": 6, "name": "Expert Astrologers", "url": `${baseUrl}/readers` }
+              ]
+            })
+          }}
+        />
       </head>
-      <body>{children}</body>
+      <body itemScope itemType="https://schema.org/WebSite">
+        <GoogleAnalytics />
+        {children}
+      </body>
     </html>
   );
 }

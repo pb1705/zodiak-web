@@ -10,11 +10,11 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 
 export const metadata: Metadata = {
   title: 'Daily Horoscopes — All 12 Zodiac Signs | Zodiak',
-  description: 'Daily horoscopes for all 12 zodiac signs powered by NASA data. Get personalized astrological guidance for Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces. Updated daily with warm, empowering insights.',
-  keywords: ['daily horoscope', 'zodiac horoscope', 'astrology daily', 'horoscope today', 'sun sign horoscope', 'daily zodiac forecast', 'today horoscope', 'daily astrology', 'zodiac signs horoscope', 'free daily horoscope'],
+  description: 'Daily horoscopes for Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces. NASA data. Updated daily.',
+  keywords: ['daily horoscope', 'horoscope today', 'today horoscope', 'zodiac signs', 'zodiac horoscope', 'sun sign horoscope', 'daily zodiac forecast', 'today\'s horoscope', 'daily astrology', 'free daily horoscope', 'love horoscope', 'career horoscope', 'Aries horoscope', 'Taurus horoscope', 'Gemini horoscope', 'Cancer horoscope', 'Leo horoscope', 'Virgo horoscope', 'Libra horoscope', 'Scorpio horoscope', 'Sagittarius horoscope', 'Capricorn horoscope', 'Aquarius horoscope', 'Pisces horoscope', 'weekly horoscope', 'monthly horoscope'],
   openGraph: {
     title: 'Daily Horoscopes — All 12 Zodiac Signs | Zodiak',
-    description: 'Daily horoscopes for all 12 zodiac signs powered by NASA data. Get personalized astrological guidance updated daily.',
+    description: 'Daily horoscopes for all 12 zodiac signs. NASA data. Updated daily. Love, career, health.',
     url: `${baseUrl}/horoscope`,
     type: 'website',
     locale: DEFAULT_LANGUAGE.locale,

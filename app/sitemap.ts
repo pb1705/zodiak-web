@@ -75,6 +75,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'hourly' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/support`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
   ];
 
   const horoscopeRoutes = zodiacSigns.map(sign => ({
@@ -84,5 +102,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...routes, ...horoscopeRoutes];
+  const readerRoutes: MetadataRoute.Sitemap = [
+    // Add reader IDs if you have them, or generate dynamically
+    // Example: { url: `${baseUrl}/readers/1`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 }
+  ];
+
+  return [...routes, ...horoscopeRoutes, ...readerRoutes];
 }

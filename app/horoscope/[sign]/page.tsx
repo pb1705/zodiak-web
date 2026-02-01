@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ sign: str
   return {
     title: `${sign} Daily Horoscope Today — Love, Career, Health | Zodiak`,
     description: `Today's horoscope for ${sign}. Personalized astrological guidance for love, career, health, finances, and spirituality. Get daily, weekly, monthly, and yearly forecasts powered by NASA data.`,
-    keywords: [`${sign} horoscope`, `${sign} daily horoscope`, `${sign} astrology`, `${sign} zodiac sign`, `today ${sign} horoscope`, `${sign} love horoscope`, `${sign} career horoscope`],
+    keywords: [`${sign} horoscope`, `${sign} daily horoscope`, `${sign} horoscope today`, `${sign} astrology`, `${sign} zodiac sign`, `today ${sign} horoscope`, `${sign} love horoscope`, `${sign} career horoscope`, `${sign} weekly horoscope`, `${sign} monthly horoscope`, `${sign} today`, `${sign} sign`, `horoscope ${sign} today`],
     openGraph: {
       title: `${sign} Daily Horoscope Today | Zodiak`,
       description: `Today's horoscope for ${sign}. Personalized astrological guidance for love, career, health, and finances.`,

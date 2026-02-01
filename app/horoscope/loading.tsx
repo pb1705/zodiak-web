@@ -10,9 +10,9 @@ export default function Loading() {
           <span className="mono text-[10px] text-white/40 tracking-[0.3em]">DAILY HOROSCOPES</span>
         </div>
         
-        <h1 className="text-6xl md:text-8xl font-light mb-8 leading-none">
+        <div className="text-6xl md:text-8xl font-light mb-8 leading-none" aria-hidden="true">
           Today's<br />Horoscopes
-        </h1>
+        </div>
         
         <p className="text-xl text-white/50 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
           Daily astrological guidance for all 12 zodiac signs powered by NASA data

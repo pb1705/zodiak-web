@@ -4,10 +4,11 @@ import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   SunIcon, MoonIcon, CalendarIcon, ClockIcon, StarIcon, ChartIcon, TrendingIcon,
-  CompassIcon, SparklesIcon, BookIcon, CheckCircleIcon,
+  CompassIcon, SparklesIcon, BookIcon, CheckCircleIcon, ArrowRightIcon,
   AriesIcon, TaurusIcon, GeminiIcon, CancerIcon, LeoIcon, VirgoIcon,
   LibraIcon, ScorpioIcon, SagittariusIcon, CapricornIcon, AquariusIcon, PiscesIcon,
 } from '@/components/icons';
+import Link from 'next/link';
 import LocationInput from '@/components/LocationInput';
 import { 
   fetchDailyTransit, fetchWeeklyTransit, fetchMonthlyTransit, fetchYearlyTransit,
@@ -1096,100 +1097,172 @@ export default function TransitsClient() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="px-6 py-20 max-w-2xl mx-auto"
+            className="min-h-screen"
           >
-            {/* Hero */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-3 mb-6 px-4 py-2 bg-white/[0.02] border border-white/[0.05]">
-                <TrendingIcon size={14} className="text-white/40" />
-                <span className="text-[10px] text-white/40 tracking-[0.15em] uppercase">Planetary Transits</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-light mb-4 leading-tight">
-                Track the<br />cosmic weather
-              </h1>
-              <p className="text-white/40 font-light max-w-md mx-auto leading-relaxed">
-                Real-time planetary movements and how they interact with your natal chart
-              </p>
-            </div>
+            {/* Back Link */}
+            <section className="px-6 pt-12 pb-8 max-w-5xl mx-auto">
+              <Link href="/transits" className="inline-flex items-center gap-2 mb-8 text-sm text-white/40 hover:text-white/60 transition-colors">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Transits
+              </Link>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="p-8 bg-white/[0.02] border border-white/[0.05] space-y-6">
-                <div className="flex items-center gap-3 mb-6 pb-6 border-b border-white/[0.05]">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-                    <StarIcon size={18} className="text-white/40" />
+              {/* Hero Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center mb-12"
+              >
+                <div className="inline-flex items-center gap-3 mb-6 px-5 py-2 rounded-full bg-white/[0.03] border border-white/[0.08]">
+                  <div style={{ color: '#63B3ED' }}>
+                    <TrendingIcon size={20} />
                   </div>
-                  <h2 className="text-xl font-light">Your Birth Details</h2>
+                  <span className="mono text-[10px] text-white/40 tracking-[0.3em]">PLANETARY TRANSITS</span>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-xs text-white/50 mb-2 tracking-wide flex items-center gap-2">
-                      <CalendarIcon size={14} /> DATE OF BIRTH
-                    </label>
-                    <input
-                      type="date"
-                      value={formData.date}
-                      onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
-                      className="w-full px-6 py-4 bg-white/[0.02] border border-white/[0.08] text-white focus:border-white/20 focus:bg-white/[0.04] transition-all outline-none font-light [color-scheme:dark]"
-                      required
-                    />
-                  </div>
+                <h1 className="text-5xl md:text-7xl font-light mb-6 leading-tight">
+                  Track the<br />Cosmic Weather
+                </h1>
+                
+                <p className="text-lg text-white/50 font-light max-w-2xl mx-auto leading-relaxed">
+                  Enter your birth details to view personalized planetary transits for daily, weekly, monthly, and yearly periods
+                </p>
+              </motion.div>
+            </section>
 
-                  <div>
-                    <label className="block text-xs text-white/50 mb-2 tracking-wide flex items-center gap-2">
-                      <ClockIcon size={14} /> TIME OF BIRTH
-                    </label>
-                    <input
-                      type="time"
-                      value={formData.time}
-                      onChange={(e) => setFormData(prev => ({ ...prev, time: e.target.value }))}
-                      max={formData.date === new Date().toISOString().split('T')[0] ? new Date().toTimeString().slice(0, 5) : undefined}
-                      className="w-full px-6 py-4 bg-white/[0.02] border border-white/[0.08] text-white focus:border-white/20 focus:bg-white/[0.04] transition-all outline-none font-light [color-scheme:dark]"
-                      required
-                    />
-                    <p className="text-[10px] text-white/20 mt-2">Enter as accurately as possible</p>
-                  </div>
-                </div>
-
-                {/* Location Input */}
-                <div className="relative">
-                  <LocationInput
-                    value={formData.location}
-                    onChange={handleLocationChange}
-                  />
-                </div>
-
-                {formData.latitude && (
-                  <p className="text-[10px] text-white/20 flex items-center gap-2">
-                    <svg className="w-3 h-3 text-[#48BB78]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Location confirmed: {formData.latitude.toFixed(4)}°, {formData.longitude?.toFixed(4)}°
-                  </p>
+            {/* Form Section */}
+            <section className="px-6 pb-24 max-w-5xl mx-auto">
+              <motion.form
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="space-y-8"
+              >
+                {/* Error Message */}
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="card-minimal p-4 rounded-none border-[#EF4444]/30 bg-[#EF4444]/5"
+                  >
+                    <p className="text-[#EF4444] text-sm text-center">{error}</p>
+                  </motion.div>
                 )}
-              </div>
 
-              {error && (
-                <div className="flex items-center gap-3 text-[#EF4444]/80 text-sm p-4 bg-[#EF4444]/5 border border-[#EF4444]/20">
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {error}
+                {/* Birth Details Form */}
+                <div className="card-minimal p-10 rounded-none">
+                  <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/[0.05]">
+                    <div className="w-12 h-12 rounded-full bg-[#63B3ED]/10 flex items-center justify-center border border-[#63B3ED]/20">
+                      <div style={{ color: '#63B3ED' }}>
+                        <StarIcon size={20} />
+                      </div>
+                    </div>
+                    <h2 className="text-2xl font-light">Your Birth Details</h2>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-xs text-white/50 mb-2 tracking-wide flex items-center gap-2">
+                          <CalendarIcon size={14} />
+                          DATE OF BIRTH
+                        </label>
+                        <input
+                          type="date"
+                          value={formData.date}
+                          onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
+                          max={new Date().toISOString().split('T')[0]}
+                          className="w-full px-6 py-4 bg-white/[0.02] border border-white/[0.08] rounded-none text-white focus:border-[#63B3ED] focus:bg-white/[0.04] transition-all duration-500 outline-none font-light [color-scheme:dark]"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs text-white/50 mb-2 tracking-wide flex items-center gap-2">
+                          <ClockIcon size={14} />
+                          TIME OF BIRTH
+                        </label>
+                        <input
+                          type="time"
+                          value={formData.time}
+                          onChange={(e) => setFormData(prev => ({ ...prev, time: e.target.value }))}
+                          max={formData.date === new Date().toISOString().split('T')[0] ? new Date().toTimeString().slice(0, 5) : undefined}
+                          className="w-full px-6 py-4 bg-white/[0.02] border border-white/[0.08] rounded-none text-white focus:border-[#63B3ED] focus:bg-white/[0.04] transition-all duration-500 outline-none font-light [color-scheme:dark]"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Location Input */}
+                    <div className="relative">
+                      <LocationInput
+                        value={formData.location}
+                        onChange={handleLocationChange}
+                        color="#63B3ED"
+                      />
+                    </div>
+                    
+                    {formData.latitude && (
+                      <p className="text-[10px] text-white/20 flex items-center gap-2">
+                        <svg className="w-3 h-3 text-[#48BB78]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        Location confirmed: {formData.latitude.toFixed(4)}°, {formData.longitude?.toFixed(4)}°
+                      </p>
+                    )}
+                  </div>
                 </div>
-              )}
 
-              {/* Submit Button - Lower z-index to stay below location suggestions */}
-              <div className="relative" style={{ zIndex: 1 }}>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full py-5 bg-white text-[#0F172A] text-sm tracking-[0.15em] uppercase font-medium hover:bg-white/90 transition-all disabled:opacity-50 flex items-center justify-center gap-3"
-                >
-                  {isLoading ? <><Spinner /> Calculating...</> : <>View Your Transits</>}
-                </button>
+                {/* Submit Button */}
+                <div className="card-minimal p-8 rounded-none relative" style={{ zIndex: 1 }}>
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full px-12 py-5 text-sm tracking-widest uppercase
+                             flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed
+                             group relative overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+                    style={{ backgroundColor: '#63B3ED', color: 'white' }}
+                  >
+                    {isLoading ? (
+                      <>
+                        <Spinner />
+                        <span>CALCULATING TRANSITS...</span>
+                      </>
+                    ) : (
+                      <>
+                        <TrendingIcon size={20} className="group-hover:scale-110 transition-transform duration-300" />
+                        <span>VIEW YOUR TRANSITS</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </motion.form>
+
+              {/* Info Cards */}
+              <div className="grid md:grid-cols-3 gap-6 mt-12">
+                {[
+                  { icon: ChartIcon, color: '#63B3ED', title: 'Planetary Aspects', text: 'See how current planets interact with your natal chart' },
+                  { icon: CalendarIcon, color: '#818CF8', title: 'Multiple Periods', text: 'Daily, weekly, monthly, and yearly transit insights' },
+                  { icon: SparklesIcon, color: '#48BB78', title: 'Personalized Guidance', text: 'Action suggestions and timing recommendations' }
+                ].map((item, i) => {
+                  const InfoIcon = item.icon;
+                  return (
+                    <div key={i} className="card-minimal p-6 rounded-none text-center">
+                      <div className="mb-4">
+                        <div className="mx-auto" style={{ color: item.color }}>
+                          <InfoIcon size={32} />
+                        </div>
+                      </div>
+                      <h3 className="text-lg font-light mb-2">{item.title}</h3>
+                      <p className="text-sm text-white/40 font-light leading-relaxed">{item.text}</p>
+                    </div>
+                  );
+                })}
               </div>
-            </form>
+            </section>
           </motion.div>
         ) : (
           /* ===== RESULTS VIEW ===== */

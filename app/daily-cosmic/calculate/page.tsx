@@ -246,7 +246,7 @@ export default function DailyCosmicCalculate() {
     try {
       const datetime = `${birthData.date}T${birthData.time}:00Z`;
 
-      const response = await fetch('https://prediction-service-latest-o30p.onrender.com/api/v2/api/v2/integrated-cosmic/daily-report', {
+      const response = await fetch('https://prediction.zodiak.life/api/v2/api/v2/integrated-cosmic/daily-report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

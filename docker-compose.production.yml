@@ -11,10 +11,13 @@ services:
     image: ${DOCKER_IMAGE:-prranav1705/zodiak-website:latest}
     container_name: zodiak-nextjs
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL:-https://zodiak.life}
       - PORT=3000
+      - ADMIN_SECRET=${ADMIN_SECRET}
     # IMPORTANT: Do NOT expose port 3000 to host (Grafana uses it)
     # Next.js is only accessible via Docker network through Nginx
     # ports:

@@ -8,7 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 export const metadata: Metadata = {
   title: 'Generate Birth Chart — Free Natal Chart Calculator | Zodiak',
   description: 'Enter your birth details to generate a complete natal chart with planetary positions, house placements, and aspects. Free birth chart calculator powered by NASA data. Get detailed interpretations for all 12 houses, planetary aspects, and chart patterns.',
-  keywords: ['birth chart calculator', 'natal chart generator', 'free birth chart', 'astrology chart calculator', 'planetary positions', 'house placements', 'ascendant calculator', 'rising sign calculator'],
+  keywords: ['birth chart calculator', 'natal chart generator', 'free birth chart', 'astrology chart calculator', 'planetary positions', 'house placements', 'ascendant calculator', 'rising sign calculator', 'moon sign calculator', 'sun sign calculator', 'natal chart free', 'birth chart free', 'Vedic birth chart', 'Western birth chart', 'chart ruler', 'planetary aspects', 'birth chart generator', 'free natal chart'],
   openGraph: {
     title: 'Generate Birth Chart — Free Natal Chart Calculator | Zodiak',
     description: 'Enter your birth details to generate a complete natal chart with planetary positions, house placements, and aspects.',

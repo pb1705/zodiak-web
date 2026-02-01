@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Award-winning 2025 fonts: Luxury serif + Clean sans */
+/* Fonts: @import so build works offline (Docker/CI). Use display=swap for FOUT. */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
 
 @layer base {

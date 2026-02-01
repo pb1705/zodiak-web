@@ -3,9 +3,10 @@
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { HeartIcon, UsersIcon, CalendarIcon, ClockIcon, SparklesIcon, WorkIcon, ChemistryIcon, FamilyIcon, StarIcon } from '@/components/icons';
+import { HeartIcon, UsersIcon, CalendarIcon, ClockIcon, SparklesIcon, WorkIcon, ChemistryIcon, FamilyIcon, StarIcon, CheckCircleIcon, InfoIcon, ArrowRightIcon, MoonIcon, SunIcon } from '@/components/icons';
 import LocationInput from '@/components/LocationInput';
 import { fetchCompatibility, CompatibilityData, CompatibilityResponse, GeocodeResult } from '@/lib/api';
+import CompatibilityResult from './CompatibilityResult';
 
 const COMPATIBILITY_TYPES = {
   love: { 
@@ -229,12 +230,12 @@ export default function CompatibilityCalculatePage() {
                           key={key}
                           type="button"
                           onClick={() => setCompatibilityType(key)}
-                          className={`p-6 rounded-none border transition-all duration-500 group ${
+                          className={`p-6 rounded-none border transition-all duration-500 group flex flex-col items-center justify-center ${
                             isActive ? 'border-current shadow-lg' : 'border-white/[0.08] hover:border-white/[0.15]'
                           }`}
                           style={isActive ? { borderColor: type.color } : {}}
                         >
-                          <div className="mx-auto mb-2" style={{ color: isActive ? type.color : 'rgba(255,255,255,0.4)' }}>
+                          <div className="mb-2 flex items-center justify-center" style={{ color: isActive ? type.color : 'rgba(255,255,255,0.4)' }}>
                             <Icon size={24} />
                           </div>
                           <div className="text-xs font-light text-center" style={{ color: isActive ? type.color : 'rgba(255,255,255,0.6)' }}>
@@ -430,9 +431,9 @@ export default function CompatibilityCalculatePage() {
                 ].map((item, i) => {
                   const InfoIcon = item.icon;
                   return (
-                    <div key={i} className="card-minimal p-6 rounded-none text-center">
-                      <div className="mb-4">
-                        <div className="mx-auto" style={{ color: item.color }}>
+                    <div key={i} className="card-minimal p-6 rounded-none text-center flex flex-col items-center">
+                      <div className="mb-4 flex items-center justify-center">
+                        <div style={{ color: item.color }}>
                           <InfoIcon size={32} />
                         </div>
                       </div>
@@ -449,110 +450,12 @@ export default function CompatibilityCalculatePage() {
             key="result"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="px-6 py-12 max-w-4xl mx-auto"
           >
-            {/* Result Display */}
-            <div className="card-minimal p-8 rounded-none text-center mb-8">
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div style={{ color: currentType.color }}>
-                  <CurrentIcon size={48} />
-                </div>
-                <div>
-                  <h1 className="text-4xl font-light mb-2">{result.overall_score}/100</h1>
-                  <p className="text-lg text-white/60 font-light">{result.rating}</p>
-                </div>
-              </div>
-
-              {/* Star Rating */}
-              <div className="flex justify-center gap-2 mb-8">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <StarIcon
-                    key={star}
-                    size={24}
-                    className={star <= Math.round(result.overall_score / 20) ? 'text-[#F59E0B]' : 'text-white/20'}
-                    filled={star <= Math.round(result.overall_score / 20)}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={() => setResult(null)}
-                className="px-6 py-2 rounded-none border border-white/10 text-sm text-white/70 hover:bg-white/5 transition-all"
-              >
-                Check Another Match
-              </button>
-            </div>
-
-            {/* Guna Milan */}
-            {result.guna_milan && (
-              <div className="card-minimal p-8 rounded-none mb-8">
-                <h3 className="text-xl font-light mb-4">Vedic Guna Milan</h3>
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <div className="text-4xl font-light">{result.guna_milan.total_points}</div>
-                  <div className="text-white/40">out of</div>
-                  <div className="text-2xl text-white/40">{result.guna_milan.max_points}</div>
-                  <div className="text-2xl" style={{ color: currentType.color }}>
-                    ({result.guna_milan.percentage.toFixed(1)}%)
-                  </div>
-                </div>
-                <p className="text-white/60 text-center">{result.guna_milan.recommendation}</p>
-              </div>
-            )}
-
-            {/* Strengths */}
-            {result.strengths && result.strengths.length > 0 && (
-              <div className="mb-8">
-                <h3 className="text-xl font-light mb-4 flex items-center gap-2">
-                  <span style={{ color: '#48BB78' }}>✓</span> Strengths
-                </h3>
-                <div className="space-y-3">
-                  {result.strengths.map((strength, index) => (
-                    <div key={index} className="card-minimal p-4 rounded-none flex items-start gap-3">
-                      <span style={{ color: '#48BB78' }}>✓</span>
-                      <p className="text-white/70 flex-1">{strength}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Challenges */}
-            {result.challenges && result.challenges.length > 0 && (
-              <div className="mb-8">
-                <h3 className="text-xl font-light mb-4 flex items-center gap-2">
-                  <span style={{ color: '#F59E0B' }}>!</span> Areas to Navigate
-                </h3>
-                <div className="space-y-3">
-                  {result.challenges.map((challenge, index) => (
-                    <div key={index} className="card-minimal p-4 rounded-none flex items-start gap-3">
-                      <span style={{ color: '#F59E0B' }}>!</span>
-                      <p className="text-white/70 flex-1">{challenge}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Advice */}
-            {result.advice && result.advice.length > 0 && (
-              <div className="mb-8">
-                <h3 className="text-xl font-light mb-4 flex items-center gap-2">
-                  <div style={{ color: '#818CF8' }}>
-                    <SparklesIcon size={20} />
-                  </div> Guidance
-                </h3>
-                <div className="space-y-3">
-                  {result.advice.map((item, index) => (
-                    <div key={index} className="card-minimal p-4 rounded-none flex items-start gap-3">
-                      <div style={{ color: '#818CF8' }}>
-                        <SparklesIcon size={16} />
-                      </div>
-                      <p className="text-white/70 flex-1">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <CompatibilityResult 
+              result={result} 
+              currentType={currentType}
+              onReset={() => setResult(null)}
+            />
           </motion.div>
         )}
       </AnimatePresence>

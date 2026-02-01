@@ -7,12 +7,12 @@ import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, getHreflangUrl } from '@/lib/lan
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 
 export const metadata: Metadata = {
-  title: 'Daily Cosmic Report — Personalized Astrological Guidance | Zodiak',
-  description: 'Get your complete daily cosmic report with moon phases, transit analysis, panchang, timing guidance, and personalized rituals. Combining Vedic and Western astrology. Updated daily with NASA-precise calculations.',
-  keywords: ['daily cosmic report', 'daily astrology reading', 'personalized daily horoscope', 'moon phase today', 'panchang today', 'muhurta timing', 'daily transits', 'morning ritual astrology', 'daily spiritual guidance', 'cosmic weather', 'daily astrological forecast'],
+  title: 'Daily Cosmic Report — Moon, Transits, Panchang | Zodiak',
+  description: 'Daily cosmic report: moon phases, transits, panchang, timing. Vedic and Western astrology. Updated daily. NASA-precise.',
+  keywords: ['daily cosmic report', 'daily astrology', 'daily astrology reading', 'personalized daily horoscope', 'moon phase today', 'panchang', 'panchang today', 'muhurta', 'muhurta timing', 'daily transits', 'morning ritual astrology', 'daily spiritual guidance', 'cosmic weather', 'daily astrological forecast', 'today astrology', 'Vedic daily', 'Western daily', 'moon phase', 'tithi', 'nakshatra', 'auspicious time today'],
   openGraph: {
-    title: 'Daily Cosmic Report — Personalized Astrological Guidance | Zodiak',
-    description: 'Get your complete daily cosmic report with moon phases, transit analysis, and personalized rituals. Updated daily.',
+    title: 'Daily Cosmic Report — Moon, Transits, Panchang | Zodiak',
+    description: 'Daily cosmic report: moon phases, transits, panchang. Vedic and Western astrology. Updated daily.',
     url: `${baseUrl}/daily-cosmic`,
     type: 'website',
     locale: DEFAULT_LANGUAGE.locale,

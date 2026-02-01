@@ -8,7 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 export const metadata: Metadata = {
   title: 'View Transits — Planetary Transit Calculator | Zodiak',
   description: 'Enter your birth details to view personalized planetary transits for daily, weekly, monthly, and yearly periods. Track how current planetary movements affect your natal chart with NASA-precise calculations.',
-  keywords: ['transit calculator', 'planetary transits calculator', 'daily transits', 'weekly transits', 'monthly transits', 'yearly transits', 'transit tracking', 'current transits'],
+  keywords: ['transit calculator', 'planetary transits calculator', 'daily transits', 'weekly transits', 'monthly transits', 'yearly transits', 'transit tracking', 'current transits', 'Saturn return', 'Mercury retrograde', 'transit forecast', 'transit chart', 'transit report', 'today transits', 'moon transit', 'Mars transit', 'Vedic transits', 'Western transits'],
   openGraph: {
     title: 'View Transits — Planetary Transit Calculator | Zodiak',
     description: 'Enter your birth details to view personalized planetary transits for daily, weekly, monthly, and yearly periods.',

@@ -7,12 +7,12 @@ import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, getHreflangUrl } from '@/lib/lan
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life';
 
 export const metadata: Metadata = {
-  title: 'Planetary Transits — Daily, Weekly, Monthly, Yearly Forecasts | Zodiak',
-  description: 'Track planetary transits with NASA-precise calculations. Get daily, weekly, monthly, and yearly transit forecasts combining Vedic and Western astrology for personalized guidance. Real-time planetary movement tracking.',
-  keywords: ['planetary transits', 'daily transits', 'weekly forecast', 'monthly horoscope', 'yearly prediction', 'Saturn return', 'Jupiter transit', 'transit tracking', 'planetary movements', 'astrology transits', 'current transits'],
+  title: 'Planetary Transits — Daily to Yearly Forecasts | Zodiak',
+  description: 'Track planetary transits: daily, weekly, monthly, yearly. NASA-precise. Vedic and Western astrology. Saturn return, Jupiter transit.',
+  keywords: ['planetary transits', 'transit forecast', 'daily transits', 'weekly forecast', 'monthly horoscope', 'yearly prediction', 'Saturn return', 'Jupiter transit', 'Mercury retrograde', 'transit tracking', 'planetary movements', 'astrology transits', 'current transits', 'transit chart', 'transit report', 'Vedic transits', 'Western transits', 'today transits', 'moon transit', 'Mars transit', 'Venus transit'],
   openGraph: {
-    title: 'Planetary Transits — Daily, Weekly, Monthly, Yearly Forecasts | Zodiak',
-    description: 'Track planetary transits with NASA-precise calculations. Get personalized transit forecasts for daily, weekly, monthly, and yearly periods.',
+    title: 'Planetary Transits — Daily to Yearly Forecasts | Zodiak',
+    description: 'Track planetary transits: daily, weekly, monthly, yearly. NASA-precise. Vedic and Western astrology.',
     url: `${baseUrl}/transits`,
     type: 'website',
     locale: DEFAULT_LANGUAGE.locale,
