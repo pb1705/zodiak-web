@@ -91,7 +91,7 @@
   
   /* Premium input styling */
   .input-premium {
-    @apply w-full bg-transparent border-b border-white/10 py-4 text-xl font-light transition-all duration-500 outline-none;
+    @apply w-full bg-transparent border-b border-white/10 py-3 sm:py-4 text-lg sm:text-xl font-light transition-all duration-500 outline-none;
   }
   
   .input-premium:focus {

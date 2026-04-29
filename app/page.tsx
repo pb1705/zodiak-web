@@ -8,8 +8,6 @@ import ComingSoonModal from '@/components/ComingSoonModal';
 import { SunIcon, MoonIcon, HeartIcon, CalendarIcon, UsersIcon, CompassIcon, ChartIcon, SparklesIcon, GlobeIcon } from '@/components/icons';
 import Link from 'next/link';
 import Image from 'next/image';
-import LeadForm from '@/components/LeadForm';
-
 const baseUrl = typeof window !== 'undefined' 
   ? window.location.origin 
   : (process.env.NEXT_PUBLIC_BASE_URL || 'https://zodiak.life');
@@ -277,61 +275,27 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Final CTA - Minimal spacing with refined logo positioning */}
-        {/* Early access / Pre-trial & free readings — app not launched yet */}
-        <section id="early-access" className="relative px-6 py-24 md:py-32 border-t border-white/[0.05]">
+        {/* Final CTA — account creation */}
+        <section className="relative px-6 py-24 md:py-32 border-t border-white/[0.05]">
           <div className="max-w-2xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <p className="mono text-[9px] text-white/45 tracking-[0.3em] uppercase mb-4">App coming soon</p>
-              <h2 className="text-4xl md:text-5xl font-light mb-4 leading-tight tracking-tight">Pre-trial & free readings</h2>
-              <p className="text-white/60 font-light mb-10">Leave your email or phone and we&apos;ll notify you when Zodiak launches — plus early access to free readings.</p>
-              <LeadForm />
+              <p className="mono text-[9px] text-white/45 tracking-[0.3em] uppercase mb-4">Begin now</p>
+              <h2 className="text-4xl md:text-5xl font-light mb-4 leading-tight tracking-tight">Your birth chart awaits.</h2>
+              <p className="text-white/60 font-light mb-10 leading-relaxed">
+                Create a free account in seconds — no passwords, just your mobile number. Access birth charts, daily transits, compatibility, and expert readers instantly.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/login?intent=signup" className="btn-trust px-12 py-4 text-xs md:text-sm tracking-widest uppercase inline-block">
+                  Create Account
+                </Link>
+                <Link href="/login" className="btn-minimal px-12 py-4 text-xs md:text-sm tracking-widest uppercase inline-block">
+                  Sign In
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        <section className="relative px-6 py-24 md:py-32">
-          <div className="max-w-5xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-              {/* Logo with generous whitespace - minimal aesthetic */}
-              <div className="mb-20 md:mb-24 flex justify-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="relative"
-                >
-                  <ZodiakLogo size={320} />
-                </motion.div>
-              </div>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 md:mb-12 leading-none tracking-tight">Begin your<br />cosmic journey</h2>
-              <p className="text-lg md:text-xl text-white/60 font-light mb-12 md:mb-16">Available on iOS and Android</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20 md:mb-24">
-                <button 
-                  onClick={() => setShowComingSoon(true)}
-                  className="btn-trust px-12 md:px-16 py-4 md:py-5 text-xs md:text-sm tracking-widest uppercase"
-                  aria-label="Download Zodiak app from App Store"
-                >
-                  App Store
-                </button>
-                <button 
-                  onClick={() => setShowComingSoon(true)}
-                  className="btn-minimal px-12 md:px-16 py-4 md:py-5 text-xs md:text-sm tracking-widest uppercase"
-                  aria-label="Download Zodiak app from Google Play"
-                >
-                  Google Play
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pt-16 md:pt-20 border-t border-white/[0.05]">
-                <div><p className="mono text-[9px] text-white/45 mb-2 tracking-[0.3em] uppercase">FREE TO START</p><p className="text-xs md:text-sm text-white/55 font-light">First reading included</p></div>
-                <div><p className="mono text-[9px] text-white/45 mb-2 tracking-[0.3em] uppercase">NO COMMITMENT</p><p className="text-xs md:text-sm text-white/55 font-light">Cancel anytime</p></div>
-                <div><p className="mono text-[9px] text-white/45 mb-2 tracking-[0.3em] uppercase">24/7 AVAILABLE</p><p className="text-xs md:text-sm text-white/55 font-light">Always here for you</p></div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-        
         {/* Footer */}
         <footer className="relative border-t border-white/[0.03] px-6 py-16">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
